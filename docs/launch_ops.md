@@ -1,74 +1,68 @@
 # CiteLocal AI launch ops/account checklist
 
-Last checked: 2026-05-18
+Last checked/launched: 2026-05-18
 
 ## Current zero-cost account/deployment status
 
 - GitHub CLI: authenticated to `github.com` as `rke6693` with `repo` scope.
 - Local project path: `/Users/agent1/Operator/citelocal-ai`.
-- Git repository: not initialized locally at inspection time.
-- Remote GitHub repository: `rke6693/citelocal-ai` was not found at inspection time, so the name appears available for creation under the authenticated account.
-- Static hosting: ready for GitHub Pages using the included Actions workflow at `.github/workflows/pages.yml`.
+- Local git repo: initialized on `main` and pushed to `origin`.
+- Public GitHub repo: `https://github.com/rke6693/citelocal-ai`.
+- Static hosting: GitHub Pages branch-source deployment from `main` `/`.
+- Public site: `https://rke6693.github.io/citelocal-ai/`.
 - Domain: do not register yet; use the free GitHub Pages URL first.
-- Email/contact: landing page uses a zero-cost GitHub Issue intake form for free snapshot requests until a private inbox/form is connected.
+- Intake/contact: landing page uses a zero-cost GitHub Issue Form for free snapshot requests until a private inbox/form is connected.
 
-## What can be launched now at zero cost
+## What launched at zero cost
 
-1. Public GitHub repository under the authenticated account.
-2. GitHub Pages static site served from `site/` via GitHub Actions.
-3. Manual audit/report delivery from the local Python CLI.
-4. Manual outbound sales workflow using the existing outreach docs.
+1. Public GitHub repository under the authenticated GitHub account.
+2. GitHub Pages static site served from the repository root.
+3. GitHub Issue Form intake for free snapshot requests.
+4. Manual audit/report delivery from the local Python CLI.
+5. Manual outbound sales workflow using the sales docs in this folder.
 
 No paid services, custom domain, new email account, Stripe, Google Workspace, or third-party signup is required for the MVP launch.
 
-## Pre-publish checks completed
+## Verification completed
 
-- `python3 -m citelocal.cli audit ...` generated `out/sample_report.html` and `out/sample_report.json` successfully.
+- `python3 -m unittest discover -s tests` passed.
+- `python3 -m citelocal.cli audit ...` generated launch-check report successfully.
 - `site/index.html` parses as HTML with Python's standard `html.parser`.
-- Static landing page has no build step and can be uploaded directly as a GitHub Pages artifact.
+- `scripts/prepare_github_pages.sh` passes `bash -n`.
+- No `hello@example.com` placeholder remains in site/docs/README.
+- GitHub Pages returned HTTP 200 and the deployed HTML contains `CiteLocal AI`.
+- GitHub Pages API reports `status: built`, URL `https://rke6693.github.io/citelocal-ai/`, source `main` `/`.
 
-## Recommended parent/owner verification before external publishing
+## Operational commands
 
-1. Decide whether `rke6693/citelocal-ai` should be public.
-2. Confirm the public GitHub Issue intake form is acceptable for the first free-snapshot requests; replace with a private inbox/form later if needed.
-3. Review pricing/claims on the landing page for accuracy and compliance.
-4. Confirm that publishing sample files in `out/` is acceptable; otherwise do not add `out/` to the first public commit.
-
-## Exact zero-cost launch commands
-
-From `/Users/agent1/Operator/citelocal-ai`:
-
-```bash
-chmod +x scripts/prepare_github_pages.sh
-REPO_NAME=citelocal-ai scripts/prepare_github_pages.sh
-```
-
-Then check the deployment:
-
-```bash
-gh run list --repo rke6693/citelocal-ai --workflow pages.yml --limit 5
-gh run watch --repo rke6693/citelocal-ai
-```
-
-Expected public URL after the Pages deployment finishes:
-
-```text
-https://rke6693.github.io/citelocal-ai/
-```
-
-## Manual fallback commands
-
-If the helper script is not used:
+Run a sample local audit:
 
 ```bash
 cd /Users/agent1/Operator/citelocal-ai
-git init
-git branch -M main
-git add README.md docs site citelocal examples .gitignore .github/workflows/pages.yml
-git commit -m "Launch CiteLocal AI static MVP"
-gh repo create rke6693/citelocal-ai --public --description "CiteLocal AI — local business AI visibility audit MVP" --source=. --remote=origin --push
-gh api -X POST repos/rke6693/citelocal-ai/pages -f build_type=workflow || gh api -X PUT repos/rke6693/citelocal-ai/pages -f build_type=workflow
-gh workflow run "Deploy static site to GitHub Pages" --repo rke6693/citelocal-ai
+python3 -m citelocal.cli audit \
+  --name "River City HVAC" \
+  --category "HVAC" \
+  --city "Cincinnati, OH" \
+  --url https://example.com \
+  --html-file examples/sample_business.html \
+  --out out/demo.html \
+  --json-out out/demo.json
+```
+
+Check Pages status:
+
+```bash
+gh api repos/rke6693/citelocal-ai/pages --jq '{status:.status,url:.html_url,source:.source}'
+curl -L https://rke6693.github.io/citelocal-ai/
+```
+
+Push future updates:
+
+```bash
+cd /Users/agent1/Operator/citelocal-ai
+git add -A
+git commit -m "Update CiteLocal AI launch assets"
+git push
 ```
 
 ## Next free launch tasks
@@ -77,4 +71,4 @@ gh workflow run "Deploy static site to GitHub Pages" --repo rke6693/citelocal-ai
 - Create `data/prospects.csv` with 50 manually researched prospects in one vertical/metro.
 - Generate 10 free snapshot summaries for the highest-fit public prospect sites.
 - Send 30 personalized, low-volume outreach messages in week one; do not automate spam.
-- After first positive replies, consider a free form backend only if it does not require a new account with email/2FA.
+- Replace GitHub Issue intake with a private inbox/form once the owner approves a contact channel.
