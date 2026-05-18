@@ -1,0 +1,92 @@
+{
+  "business": {
+    "name": "River City HVAC",
+    "category": "HVAC",
+    "city": "Cincinnati, OH",
+    "url": "https://rivercity.example"
+  },
+  "overall_score": 89,
+  "grade": "A",
+  "findings": [
+    {
+      "label": "Local entity clarity",
+      "score": 20,
+      "max_score": 20,
+      "status": "strong",
+      "evidence": "Found 3/3 core identity signals across title/meta/headings/body.",
+      "recommendation": "Put the exact business name, city/service area, and primary category in the homepage H1, title tag, footer, and About/Contact copy."
+    },
+    {
+      "label": "NAP/contact accessibility",
+      "score": 12,
+      "max_score": 15,
+      "status": "medium",
+      "evidence": "Contact terms: 2; phone pattern detected: True.",
+      "recommendation": "Expose phone, address/service area, hours, and contact CTA in plain text; avoid hiding core details only inside images."
+    },
+    {
+      "label": "Structured data/schema",
+      "score": 15,
+      "max_score": 15,
+      "status": "strong",
+      "evidence": "JSON-LD types detected: LocalBusiness.",
+      "recommendation": "Add LocalBusiness/Organization JSON-LD with name, phone, URL, address/service area, opening hours, sameAs links, and service catalog."
+    },
+    {
+      "label": "Buyer-answer content",
+      "score": 20,
+      "max_score": 20,
+      "status": "strong",
+      "evidence": "Buyer intent terms: 6; question marks: 4.",
+      "recommendation": "Create concise FAQ, cost, comparison, emergency/same-day, and service-area answer sections that AI systems can quote directly."
+    },
+    {
+      "label": "Trust and proof density",
+      "score": 10,
+      "max_score": 15,
+      "status": "medium",
+      "evidence": "Trust terms detected: 5.",
+      "recommendation": "Add first-party review excerpts, license/insurance language, warranty details, years in business, photos, and proof-backed claims."
+    },
+    {
+      "label": "Service/content architecture",
+      "score": 6,
+      "max_score": 10,
+      "status": "medium",
+      "evidence": "Service/FAQ/location-like internal links detected: 3.",
+      "recommendation": "Build separate pages for the top services, common problems, pricing ranges, and service areas; link them from homepage navigation."
+    },
+    {
+      "label": "Technical crawl basics",
+      "score": 6,
+      "max_score": 10,
+      "status": "medium",
+      "evidence": "Title: True; meta: True; words: 87; robots: not checked; sitemap: not checked.",
+      "recommendation": "Ensure each important page has a unique title/meta description, 300+ useful words, crawlable HTML, robots.txt, and sitemap.xml."
+    }
+  ],
+  "extracted": {
+    "title": "River City HVAC | Cincinnati Heating & Cooling",
+    "meta_description": "River City HVAC provides emergency furnace repair, AC installation, and maintenance in Cincinnati, OH.",
+    "headings": [
+      "River City HVAC in Cincinnati, OH",
+      "How much does furnace repair cost?",
+      "Frequently asked questions"
+    ],
+    "json_ld_types": [
+      "LocalBusiness"
+    ],
+    "links": [
+      "https://rivercity.example/services/ac-installation",
+      "https://rivercity.example/faq",
+      "https://rivercity.example/service-areas/cincinnati"
+    ],
+    "word_count": 87
+  },
+  "next_actions": [
+    "Build separate pages for the top services, common problems, pricing ranges, and service areas; link them from homepage navigation.",
+    "Ensure each important page has a unique title/meta description, 300+ useful words, crawlable HTML, robots.txt, and sitemap.xml.",
+    "Add first-party review excerpts, license/insurance language, warranty details, years in business, photos, and proof-backed claims.",
+    "Expose phone, address/service area, hours, and contact CTA in plain text; avoid hiding core details only inside images."
+  ]
+}

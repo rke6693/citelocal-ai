@@ -1,0 +1,52 @@
+name: Free AI Visibility Snapshot
+description: Request a free CiteLocal AI snapshot for a local service business.
+title: "Free snapshot: [Business name]"
+labels: ["lead", "free-snapshot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for requesting a free CiteLocal AI snapshot. Do not include private logins, customer data, or anything sensitive here. This public intake is a zero-cost launch channel until a private form/inbox is connected.
+  - type: input
+    id: business_name
+    attributes:
+      label: Business name
+      placeholder: River City HVAC
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: Website URL
+      placeholder: https://example.com
+    validations:
+      required: true
+  - type: input
+    id: city
+    attributes:
+      label: City / service area
+      placeholder: Cincinnati, OH
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Business category
+      options:
+        - HVAC
+        - Plumbing
+        - Roofing
+        - Electrical
+        - Landscaping
+        - Dental / medical local practice
+        - Legal / professional service
+        - Other local service
+    validations:
+      required: true
+  - type: textarea
+    id: goals
+    attributes:
+      label: What do you want more of?
+      placeholder: Emergency calls, replacement quotes, service-area visibility, calls from nearby suburbs, etc.
+    validations:
+      required: false
