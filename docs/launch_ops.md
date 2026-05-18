@@ -11,13 +11,13 @@ Last checked/launched: 2026-05-18
 - Static hosting: GitHub Pages branch-source deployment from `main` `/`.
 - Public site: `https://rke6693.github.io/citelocal-ai/`.
 - Domain: do not register yet; use the free GitHub Pages URL first.
-- Intake/contact: landing page uses a zero-cost GitHub Issue Form for free snapshot requests until a private inbox/form is connected.
+- Intake/contact: landing page uses a zero-cost `request.html` copy/email draft page so prospects do not need to create a GitHub or third-party account.
 
 ## What launched at zero cost
 
 1. Public GitHub repository under the authenticated GitHub account.
 2. GitHub Pages static site served from the repository root.
-3. GitHub Issue Form intake for free snapshot requests.
+3. No-account request page that lets prospects copy a formatted free snapshot request or open an email draft.
 4. Manual audit/report delivery from the local Python CLI.
 5. Manual outbound sales workflow using the sales docs in this folder.
 
@@ -29,7 +29,7 @@ No paid services, custom domain, new email account, Stripe, Google Workspace, or
 - `python3 -m citelocal.cli audit ...` generated launch-check report successfully.
 - `site/index.html` parses as HTML with Python's standard `html.parser`.
 - `scripts/prepare_github_pages.sh` passes `bash -n`.
-- No `hello@example.com` placeholder remains in site/docs/README.
+- No placeholder contact email remains in site/docs/README.
 - GitHub Pages returned HTTP 200 and the deployed HTML contains `CiteLocal AI`.
 - GitHub Pages API reports `status: built`, URL `https://rke6693.github.io/citelocal-ai/`, source `main` `/`.
 
@@ -71,4 +71,4 @@ git push
 - Create `data/prospects.csv` with 50 manually researched prospects in one vertical/metro.
 - Generate 10 free snapshot summaries for the highest-fit public prospect sites.
 - Send 30 personalized, low-volume outreach messages in week one; do not automate spam.
-- Replace GitHub Issue intake with a private inbox/form once the owner approves a contact channel.
+- Replace the no-account copy/email draft request page with a private inbox/form once the owner approves a contact channel.

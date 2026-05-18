@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Request a free AI visibility snapshot — CiteLocal AI</title>
+  <style>
+    body{margin:0;background:#090f1f;color:#eef4ff;font-family:Inter,system-ui,sans-serif}.wrap{max-width:860px;margin:auto;padding:48px 22px}.card{background:#121b33;border:1px solid #253454;border-radius:24px;padding:26px;margin:18px 0}.cta{display:inline-block;background:#7bf0c2;color:#07111d;text-decoration:none;padding:14px 18px;border-radius:14px;font-weight:900}.muted{color:#aebcda}pre{white-space:pre-wrap;background:#07111d;border:1px solid #253454;border-radius:18px;padding:18px;overflow:auto}input,textarea{width:100%;box-sizing:border-box;margin:8px 0 14px;padding:12px;border-radius:10px;border:1px solid #253454;background:#07111d;color:#eef4ff}label{font-weight:800}button{border:0;cursor:pointer;background:#7bf0c2;color:#07111d;padding:12px 16px;border-radius:12px;font-weight:900}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="muted" href="index.html">← Back to CiteLocal AI</a>
+    <h1>Request a free AI visibility snapshot</h1>
+    <p class="muted">Zero-cost launch note: this page avoids forcing prospects to create a GitHub or third-party account. Fill it out, copy the request, and send it through your normal email, text, or contact form channel. A private inbox/form will replace this once approved.</p>
+    <section class="card">
+      <label>Business name<input id="business" placeholder="River City HVAC"></label>
+      <label>Website URL<input id="website" placeholder="https://example.com"></label>
+      <label>City / service area<input id="city" placeholder="Cincinnati, OH"></label>
+      <label>Business category<input id="category" placeholder="HVAC, plumbing, roofing, dental, legal, etc."></label>
+      <label>What do you want more of?<textarea id="goals" rows="4" placeholder="Emergency calls, quote requests, service-area visibility, nearby suburb leads..."></textarea></label>
+      <button id="copy">Copy request</button>
+      <a class="cta" id="mailto" href="#">Open email draft</a>
+    </section>
+    <section class="card">
+      <h2>Request text</h2>
+      <pre id="output">Complete the fields above, then copy your request.</pre>
+      <p class="muted">No sensitive data, logins, customer records, or private analytics are needed for a free snapshot.</p>
+    </section>
+  </main>
+  <script>
+    const ids=['business','website','city','category','goals'];
+    const out=document.getElementById('output');
+    const mailto=document.getElementById('mailto');
+    function text(){
+      const v=Object.fromEntries(ids.map(id=>[id,document.getElementById(id).value.trim()||'[not provided]']));
+      return `Free AI visibility snapshot request\n\nBusiness: ${v.business}\nWebsite: ${v.website}\nCity/service area: ${v.city}\nCategory: ${v.category}\nGoal: ${v.goals}\n\nPlease run a CiteLocal AI free snapshot and send the top 3 fixes.`;
+    }
+    function render(){
+      const t=text(); out.textContent=t;
+      mailto.href='mailto:?subject='+encodeURIComponent('Free AI visibility snapshot request')+'&body='+encodeURIComponent(t);
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener('input',render));
+    document.getElementById('copy').addEventListener('click',async()=>{await navigator.clipboard.writeText(text()); document.getElementById('copy').textContent='Copied'; setTimeout(()=>document.getElementById('copy').textContent='Copy request',1500)});
+    render();
+  </script>
+</body>
+</html>
